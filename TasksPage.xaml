@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.TasksPage">
+    <ScrollView>
+        <VerticalStackLayout
+        Padding="100,10"
+        Spacing="25">
+
+            <Label
+            Text="Tasks:"
+            Style="{StaticResource Headline}"
+            TextColor="Orange"
+            SemanticProperties.HeadingLevel="Level1" />
+
+            <Label 
+                x:Name="noTasksLabel"
+                Text="No tasks available."
+                TextColor="White"
+                FontSize="25"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                IsVisible="False" />
+            
+            <ListView x:Name="listViewTasks" ItemsSource="{Binding TaskItems}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="10" Spacing="10">
+                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                    <Image Source="task_icon.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
+
+                                    <StackLayout Orientation="Vertical" Spacing="5" HorizontalOptions="FillAndExpand">
+
+                                        <StackLayout Orientation="Horizontal" Spacing="5">
+                                            <Label Text="Name:" FontAttributes="Bold" />
+                                            <Label Text="{Binding Name}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal" Spacing="5">
+                                            <Label Text="Description: " FontAttributes="Bold" />
+                                            <Label Text="{Binding Description}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal" Spacing="5">
+                                            <Label Text="Ordxer ID: " FontAttributes="Bold" />
+                                            <Label Text="{Binding OrderId}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal" Spacing="5">
+                                            <Label Text="Task Owner: " FontAttributes="Bold" />
+                                            <Label Text="{Binding TaskOwner}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal" Spacing="5">
+                                            <Label Text="Relevant Aspects: " FontAttributes="Bold" />
+                                            <Label Text="{Binding RelevantAspects}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal" Spacing="5">
+                                            <Label Text="Critical Activity: " FontAttributes="Bold" />
+                                            <Label Text="{Binding CriticalActivity}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal" Spacing="5">
+                                            <Label Text="How to do: " FontAttributes="Bold" />
+                                            <Label Text="{Binding HowToDo}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal" Spacing="5">
+                                            <Label Text="Key point: " FontAttributes="Bold" />
+                                            <Label Text="{Binding KeyPoint}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal" Spacing="5">
+                                            <Label Text="Local Coordinates: " FontAttributes="Bold" />
+                                            <Label Text="{Binding LocalCoordinates}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal" Spacing="5">
+                                            <Label Text="Photos number: " FontAttributes="Bold" />
+                                            <Label Text="{Binding NumberOfPhotos}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
+                                        </StackLayout>
+
+                                    </StackLayout>
+                                </StackLayout>
+                                <BoxView HeightRequest="1" Color="Gray" Margin="0,10,0,0" HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

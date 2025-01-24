@@ -1,39 +1,44 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data;
-using System.Runtime.CompilerServices;
 using MauiApp1.Models;
 using Newtonsoft.Json;
 
 namespace MauiApp1
 {
-    public partial class MainPage : ContentPage
+    public partial class ChecklistPage : ContentPage
     {
         private readonly ApiService apiService = new ApiService();
         public List<Checklist> ChecklistItems { get; set; } = new List<Checklist>();
 
-        public MainPage()
+        public ChecklistPage()
         {
             InitializeComponent();
-            BindingContext = this;
-
+            //BindingContext = this;
             LoadDataAsync();
         }
 
         private async void LoadDataAsync()
         {
-            var url = apiService.GetApiBaseUrl();
+            var url = ApiService.GetApiChecklistUrl();
             var data = await apiService.GetDataAsync(url);
 
             if (!string.IsNullOrEmpty(data))
             {
                 var checklistData = JsonConvert.DeserializeObject<List<Checklist>>(data);
 
-                if (checklistData != null)
+                if (checklistData != null && checklistData.Count > 0)
                 {
                     ChecklistItems = checklistData;
-                    listViewProjetos.ItemsSource = ChecklistItems;
+                    listViewProjects.ItemsSource = ChecklistItems;
+                    noChecklistLabel.IsVisible = false;
                 }
+                else
+                {
+                    noChecklistLabel.IsVisible = true;
+                }
+            }
+
+            else
+            {
+                noChecklistLabel.IsVisible = true;
             }
         }
 
@@ -49,4 +54,7 @@ namespace MauiApp1
             }
         }
     }
+
+
 }
+

@@ -14,7 +14,17 @@ namespace MauiApp1
 
         public string GetApiBaseUrl()
         {
-            return App.Configuration["API:URL"] ?? string.Empty;
+            return App.Configuration["API:BASE_URL"] ?? string.Empty;
+        }
+
+        public static string GetApiChecklistUrl()
+        {
+            return App.Configuration["API:CHECKLIST_URL"] ?? string.Empty;
+        }
+
+        public string GetApiTaskUrl()
+        {
+            return App.Configuration["API:TASK_URL"] ?? string.Empty;
         }
 
         public async Task<string?> GetDataAsync(string url)

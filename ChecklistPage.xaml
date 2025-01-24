@@ -1,20 +1,26 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiApp1.MainPage">
+             x:Class="MauiApp1.ChecklistPage">
 
     <ScrollView>
-        <VerticalStackLayout
-            Padding="100,10"
-            Spacing="25">
-
+        <VerticalStackLayout Padding="100,10" Spacing="25">
             <Label
                 Text="Checklists:"
                 Style="{StaticResource Headline}"
                 TextColor="Orange"
                 SemanticProperties.HeadingLevel="Level1" />
 
-            <ListView x:Name="listViewProjetos" ItemsSource="{Binding ChecklistItems}" ItemTapped="OnItemTapped">
+            <Label 
+                x:Name="noChecklistLabel"
+                Text="No checklists available."
+                TextColor="White"
+                FontSize="25"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                IsVisible="False" />
+
+            <ListView x:Name="listViewProjects" ItemsSource="{Binding ChecklistItems}" ItemTapped="OnItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -46,8 +52,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>
