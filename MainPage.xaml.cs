@@ -15,38 +15,14 @@ namespace MauiApp1
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = this;
+            //BindingContext = this;
 
-            LoadDataAsync();
+            //LoadDataAsync();
         }
-
-        private async void LoadDataAsync()
+        
+        private async void ChecklistButtonClick(object sender, EventArgs e)
         {
-            var url = apiService.GetApiBaseUrl();
-            var data = await apiService.GetDataAsync(url);
-
-            if (!string.IsNullOrEmpty(data))
-            {
-                var checklistData = JsonConvert.DeserializeObject<List<Checklist>>(data);
-
-                if (checklistData != null)
-                {
-                    ChecklistItems = checklistData;
-                    listViewProjetos.ItemsSource = ChecklistItems;
-                }
-            }
-        }
-
-        private async void OnItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            if (e.Item is Checklist checklistItemSelected)
-            {
-                await Navigation.PushAsync(new TasksPage(checklistItemSelected.Id));
-            }
-            else
-            {
-                await DisplayAlert("Error", "No item selected", "OK");
-            }
+            await Navigation.PushAsync(new ChecklistPage());
         }
     }
 }

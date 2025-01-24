@@ -11,7 +11,6 @@ namespace MauiApp1
         public ChecklistPage()
         {
             InitializeComponent();
-            //BindingContext = this;
             LoadDataAsync();
         }
 

@@ -4,50 +4,31 @@
              x:Class="MauiApp1.MainPage">
 
     <ScrollView>
-        <VerticalStackLayout
-            Padding="100,10"
-            Spacing="25">
+        <VerticalStackLayout Padding="200,10" Spacing="25">
 
             <Label
-                Text="Checklists:"
+                Text="MAUI API Project:"
                 Style="{StaticResource Headline}"
                 TextColor="Orange"
+                Padding="0,0,0,40"
                 SemanticProperties.HeadingLevel="Level1" />
 
-            <ListView x:Name="listViewProjetos" ItemsSource="{Binding ChecklistItems}" ItemTapped="OnItemTapped">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Vertical" Padding="10" Spacing="10">
-                                <StackLayout Orientation="Horizontal" Spacing="10">
-                                    <Image Source="checklist_icon.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
+            <Button
+                Text="Checklist"
+                Clicked="ChecklistButtonClick"
+                BackgroundColor="Transparent"
+                TextColor="White"
+                BorderColor="Gray"
+                BorderWidth="0.5"
+                FontSize="22"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Padding="0,0,20,8">
+                <Button.ImageSource>
+                    <FileImageSource File="checklist_icon.png"  />
+                </Button.ImageSource>
+            </Button>
 
-                                    <StackLayout Orientation="Vertical" Spacing="5">
-
-                                        <StackLayout Orientation="Horizontal" Spacing="5">
-                                            <Label Text="Name:" FontAttributes="Bold" />
-                                            <Label Text="{Binding Name}" />
-                                        </StackLayout>
-
-                                        <StackLayout Orientation="Horizontal" Spacing="5">
-                                            <Label Text="Description: " FontAttributes="Bold" />
-                                            <Label Text="{Binding Description}" />
-                                        </StackLayout>
-
-                                        <StackLayout Orientation="Horizontal" Spacing="5">
-                                            <Label Text="Weight: " FontAttributes="Bold" />
-                                            <Label Text="{Binding Weight}" />
-                                        </StackLayout>
-                                    </StackLayout>
-                                </StackLayout>
-                                <BoxView HeightRequest="1" Color="Gray" Margin="0,10,0,0" HorizontalOptions="FillAndExpand"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>
