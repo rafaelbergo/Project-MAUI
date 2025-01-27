@@ -27,7 +27,7 @@
                 <Label 
                     x:Name="noChecklistLabel"
                     Text="No checklists available."
-                    TextColor="White"
+                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
                     FontSize="25"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"

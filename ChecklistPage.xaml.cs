@@ -25,7 +25,8 @@ namespace MauiApp1
 
                 if (checklistData != null && checklistData.Count > 0)
                 {
-                    ChecklistItems = checklistData;
+                    ChecklistItems = checklistData.OrderByDescending(checklist => checklist.Weight).ToList();
+
                     listViewProjects.ItemsSource = ChecklistItems;
                     noChecklistLabel.IsVisible = false;
                 }

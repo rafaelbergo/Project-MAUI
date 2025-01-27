@@ -34,9 +34,9 @@
                     FontSize="25"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
-                    IsVisible="False" />    
+                    IsVisible="False" />
 
-                <ListView x:Name="listViewTasks" ItemsSource="{Binding TaskItems}">
+                <ListView x:Name="listViewTasks" ItemsSource="{Binding TaskItems}" ItemTapped="OnItemTapped">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -45,55 +45,10 @@
                                         <Image Source="task_icon.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
 
                                         <StackLayout Orientation="Vertical" Spacing="5" HorizontalOptions="FillAndExpand">
-
+                                            
                                             <StackLayout Orientation="Horizontal" Spacing="5">
                                                 <Label Text="Name:" FontAttributes="Bold" />
                                                 <Label Text="{Binding Name}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
-                                            </StackLayout>
-
-                                            <StackLayout Orientation="Horizontal" Spacing="5">
-                                                <Label Text="Description: " FontAttributes="Bold" />
-                                                <Label Text="{Binding Description}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
-                                            </StackLayout>
-
-                                            <StackLayout Orientation="Horizontal" Spacing="5">
-                                                <Label Text="Ordxer ID: " FontAttributes="Bold" />
-                                                <Label Text="{Binding OrderId}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
-                                            </StackLayout>
-
-                                            <StackLayout Orientation="Horizontal" Spacing="5">
-                                                <Label Text="Task Owner: " FontAttributes="Bold" />
-                                                <Label Text="{Binding TaskOwner}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
-                                            </StackLayout>
-
-                                            <StackLayout Orientation="Horizontal" Spacing="5">
-                                                <Label Text="Relevant Aspects: " FontAttributes="Bold" />
-                                                <Label Text="{Binding RelevantAspects}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
-                                            </StackLayout>
-
-                                            <StackLayout Orientation="Horizontal" Spacing="5">
-                                                <Label Text="Critical Activity: " FontAttributes="Bold" />
-                                                <Label Text="{Binding CriticalActivity}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
-                                            </StackLayout>
-
-                                            <StackLayout Orientation="Horizontal" Spacing="5">
-                                                <Label Text="How to do: " FontAttributes="Bold" />
-                                                <Label Text="{Binding HowToDo}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
-                                            </StackLayout>
-
-                                            <StackLayout Orientation="Horizontal" Spacing="5">
-                                                <Label Text="Key point: " FontAttributes="Bold" />
-                                                <Label Text="{Binding KeyPoint}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
-                                            </StackLayout>
-
-                                            <StackLayout Orientation="Horizontal" Spacing="5">
-                                                <Label Text="Local Coordinates: " FontAttributes="Bold" />
-                                                <Label Text="{Binding LocalCoordinates}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
-                                            </StackLayout>
-
-                                            <StackLayout Orientation="Horizontal" Spacing="5">
-                                                <Label Text="Photos number: " FontAttributes="Bold" />
-                                                <Label Text="{Binding NumberOfPhotos}" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
                                             </StackLayout>
 
                                         </StackLayout>
@@ -106,5 +61,34 @@
                 </ListView>
             </VerticalStackLayout>
         </ScrollView>
+
+        <Grid x:Name="tasksProperties" IsVisible="False" Opacity="0.8">
+            <Frame BackgroundColor="{AppThemeBinding Light=White, Dark=Black}" Padding="40" Margin="30,30,30,500" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Task Properties" FontSize="24" FontAttributes="Bold" TextColor="{AppThemeBinding Light=Black, Dark=White}" HorizontalOptions="Center" />
+
+                    <Label Text="Name:" FontAttributes="Bold" />
+                    <Label x:Name="labelName" LineBreakMode="NoWrap" />
+
+                    <Label Text="Relevant Aspects:" FontAttributes="Bold" />
+                    <Label x:Name="labelRelevantAspects" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
+
+                    <Label Text="Key Point:" FontAttributes="Bold" />
+                    <Label x:Name="labelKeyPoint" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
+
+                    <Label Text="How to Do:" FontAttributes="Bold" />
+                    <Label x:Name="labelHowToDo" LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand" />
+
+                    <Label Text="Local Coordinates:" FontAttributes="Bold" />
+                    <Entry x:Name="labelLocalCoordinates" Placeholder="Edit Local Coordinates" />
+
+                    <HorizontalStackLayout Spacing="15" HorizontalOptions="End">
+                        <Button Text="Close" BackgroundColor="Orange" TextColor="{AppThemeBinding Light=Black, Dark=White}"  Clicked="OnClosePopup" />
+                        <Button Text="Save" BackgroundColor="Orange"  TextColor="{AppThemeBinding Light=Black, Dark=White}" Clicked="OnSavePopup" />
+                    </HorizontalStackLayout>
+                    
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
     </Grid>
 </ContentPage>

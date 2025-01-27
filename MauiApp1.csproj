@@ -64,10 +64,14 @@
 
 	<ItemGroup>
 	  <Compile Remove="NewPage1.xaml.cs" />
+	  <Compile Remove="TaskDetailsPage.xaml.cs" />
+	  <Compile Remove="TaskPropertiesPage.xaml.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Remove="NewPage1.xaml" />
+	  <MauiXaml Remove="TaskDetailsPage.xaml" />
+	  <MauiXaml Remove="TaskPropertiesPage.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
