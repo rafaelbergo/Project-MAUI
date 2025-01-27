@@ -19,7 +19,7 @@ namespace MauiApp1
 
             //LoadDataAsync();
         }
-        
+
         private async void ChecklistButtonClick(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ChecklistPage());

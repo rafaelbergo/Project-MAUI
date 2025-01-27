@@ -11,6 +11,12 @@ namespace MauiApp1
 
             Configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
 
+            if (Current != null)
+            {
+                //Current.UserAppTheme = AppTheme.Dark;
+                //Current.UserAppTheme = AppTheme.Light;
+            }
+
             MainPage = new AppShell();
         }
     }

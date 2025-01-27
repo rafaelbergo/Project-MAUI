@@ -1,34 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiApp1.MainPage">
+             x:Class="MauiApp1.MainPage"
+             xmlns:local="clr-namespace:MauiApp1">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="200,10" Spacing="25">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-            <Label
-                Text="MAUI API Project:"
-                Style="{StaticResource Headline}"
-                TextColor="Orange"
-                Padding="0,0,0,40"
-                SemanticProperties.HeadingLevel="Level1" />
+        <local:ThemeManager 
+            Grid.Row="0"
+            HorizontalOptions="End"
+            VerticalOptions="Start"
+            Margin="0" />
 
-            <Button
-                Text="Checklist"
-                Clicked="ChecklistButtonClick"
-                BackgroundColor="Transparent"
-                TextColor="White"
-                BorderColor="Gray"
-                BorderWidth="0.5"
-                FontSize="22"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                Padding="0,0,20,8">
-                <Button.ImageSource>
-                    <FileImageSource File="checklist_icon.png"  />
-                </Button.ImageSource>
-            </Button>
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="200,0" Spacing="25">
+                <Label
+                    Text="MAUI API Project:"
+                    Style="{StaticResource Headline}"
+                    TextColor="Orange"
+                    Padding="0,0,0,40"
+                    SemanticProperties.HeadingLevel="Level1"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Start" />
 
-        </VerticalStackLayout>
-    </ScrollView>
+                <Button
+                    Text="Checklist"
+                    Clicked="ChecklistButtonClick"
+                    BackgroundColor="Transparent"
+                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                    BorderColor="Gray"
+                    BorderWidth="0.5"
+                    FontSize="22"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Padding="0,0,20,8">
+                    <Button.ImageSource>
+                        <FileImageSource File="checklist_icon.png" />
+                    </Button.ImageSource>
+                </Button>
+                
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>
