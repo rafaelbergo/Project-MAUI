@@ -59,20 +59,37 @@ namespace MauiApp1
 
                     tasksProperties.IsVisible = true;
                 }
-
                 ((ListView)sender).SelectedItem = null;
-
             }
-            
         }
 
-        private void OnSavePopup(object sender, EventArgs e)
+        private async void OnSavePopup(object sender, EventArgs e)
         {
-            if (selectedTask != null)
+            if (selectedTask != null && !string.IsNullOrEmpty(labelLocalCoordinates.Text))
             {
-                // POST to update the task
+                string taskId = selectedTask.Id;
+                string newCoordinates = labelLocalCoordinates.Text;
+
+                var isUpdated = await apiService.UptadeTaskProperty(taskId, newCoordinates);
+
+                if (isUpdated)
+                {
+                    selectedTask.LocalCoordinates = newCoordinates;
+
+                    labelLocalCoordinates.Text = newCoordinates;
+                    await DisplayAlert("Success", "Coordinates updated", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Error to update", "OK");
+                }
 
                 tasksProperties.IsVisible = false;
+            }
+
+            else
+            {
+                await DisplayAlert("Error", "Coordinates empty", "OK");
             }
         }
 
