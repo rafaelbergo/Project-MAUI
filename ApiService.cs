@@ -53,9 +53,9 @@ namespace MauiApp1
 
         public async Task<bool> UptadeTaskProperty(string taskId, string localCoordinates)
         {
-            var json = JsonConvert.SerializeObject( localCoordinates );
+            var json = JsonConvert.SerializeObject(localCoordinates);
 
-            var url = PostTaskUrl() + taskId + "/local-coordinates";
+            var url = API.POST_TASK_URL + taskId + "/local-coordinates";
             var content = new StringContent(json, Encoding.UTF8, "text/json");
 
             var request = await httpClient.PostAsync(url, content);

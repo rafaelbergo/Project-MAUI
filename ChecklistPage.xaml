@@ -7,6 +7,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -16,56 +17,58 @@
             VerticalOptions="Start"
             Margin="0" />
 
-        <ScrollView Grid.Row="1" >
-            <VerticalStackLayout Padding="100,0" Spacing="25">
-                <Label
-                    Text="Checklists:"
-                    Style="{StaticResource Headline}"
-                    TextColor="Orange"
-                    SemanticProperties.HeadingLevel="Level1" />
+        <Grid Grid.Row="1">
+            <Label
+                Text="Checklists:"
+                Style="{StaticResource Headline}"
+                TextColor="Orange"
+                SemanticProperties.HeadingLevel="Level1" />
 
-                <Label 
-                    x:Name="noChecklistLabel"
-                    Text="No checklists available."
-                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
-                    FontSize="25"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    IsVisible="False" />
+            <Label 
+                x:Name="noChecklistLabel"
+                Text="No checklists available."
+                TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                FontSize="25"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                IsVisible="False" />
+        </Grid>
+        
+        <Grid Grid.Row="2" Padding="20,0">
+            
+            <ListView x:Name="listViewProjects" ItemsSource="{Binding ChecklistItems}" ItemTapped="OnItemTapped" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="10" Spacing="10">
+                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                    <Image Source="checklist_icon.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
 
-                <ListView x:Name="listViewProjects" ItemsSource="{Binding ChecklistItems}" ItemTapped="OnItemTapped">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Orientation="Vertical" Padding="10" Spacing="10">
-                                    <StackLayout Orientation="Horizontal" Spacing="10">
-                                        <Image Source="checklist_icon.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
+                                    <StackLayout Orientation="Vertical" Spacing="5" HorizontalOptions="FillAndExpand">
 
-                                        <StackLayout Orientation="Vertical" Spacing="5">
+                                        <StackLayout Orientation="Horizontal" Spacing="5">
+                                            <Label Text="Name:" FontAttributes="Bold" />
+                                            <Label Text="{Binding Name}" LineBreakMode="WordWrap" />
+                                        </StackLayout>
 
-                                            <StackLayout Orientation="Horizontal" Spacing="5">
-                                                <Label Text="Name:" FontAttributes="Bold" />
-                                                <Label Text="{Binding Name}" />
-                                            </StackLayout>
 
-                                            <StackLayout Orientation="Horizontal" Spacing="5">
-                                                <Label Text="Description: " FontAttributes="Bold" />
-                                                <Label Text="{Binding Description}" />
-                                            </StackLayout>
+                                        <Label Text="Description: " FontAttributes="Bold" />
+                                        <Label Text="{Binding Description}" LineBreakMode="WordWrap"/>
 
-                                            <StackLayout Orientation="Horizontal" Spacing="5">
-                                                <Label Text="Weight: " FontAttributes="Bold" />
-                                                <Label Text="{Binding Weight}" />
-                                            </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal" Spacing="5">
+                                            <Label Text="Weight: " FontAttributes="Bold" />
+                                            <Label Text="{Binding Weight}" />
                                         </StackLayout>
                                     </StackLayout>
-                                    <BoxView HeightRequest="1" Color="Gray" Margin="0,10,0,0" HorizontalOptions="FillAndExpand"/>
                                 </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </VerticalStackLayout>
-        </ScrollView>
+                                <!-- <BoxView HeightRequest="1" Color="Gray" Margin="0,10,0,0" HorizontalOptions="FillAndExpand"/>-->
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+       
     </Grid>
 </ContentPage>

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Reflection;
+using Microsoft.Extensions.Configuration;
 
 namespace MauiApp1
 {
@@ -8,8 +9,24 @@ namespace MauiApp1
         public App()
         {
             InitializeComponent();
+            /*
+#if ANDROID
+            var a = Assembly.GetExecutingAssembly();
 
-            Configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            var appSettings = $"{a.GetName().Name}.Resources.appsettings.json";
+
+            using var stream = a.GetManifestResourceStream(appSettings);
+
+            if (stream != null)
+            {
+                var config = new ConfigurationBuilder()
+                .AddJsonStream(stream)
+                .Build();
+            }
+            
+#else
+                Configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+#endif*/
 
             if (Current != null)
             {

@@ -17,7 +17,7 @@
             Margin="0" />
 
         <ScrollView Grid.Row="1">
-            <VerticalStackLayout Padding="200,0" Spacing="25">
+            <VerticalStackLayout Padding="20,0" Spacing="25">
                 <Label
                     Text="MAUI API Project:"
                     Style="{StaticResource Headline}"

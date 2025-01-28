@@ -19,7 +19,7 @@ namespace MauiApp1
 
         private async void LoadDataAsync()
         {
-            var url = apiService.GetApiTaskUrl() + taskID;
+            var url = API.TASK_URL + taskID;
             var data = await apiService.GetDataAsync(url);
 
             if (!string.IsNullOrEmpty(data))

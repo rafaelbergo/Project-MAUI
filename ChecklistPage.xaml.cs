@@ -13,12 +13,10 @@ namespace MauiApp1
             InitializeComponent();
             LoadDataAsync();
         }
-
+        
         private async void LoadDataAsync()
         {
-            var url = ApiService.GetApiChecklistUrl();
-            var data = await apiService.GetDataAsync(url);
-
+            var data = await apiService.GetDataAsync(API.CHECKLIST_URL);
             if (!string.IsNullOrEmpty(data))
             {
                 var checklistData = JsonConvert.DeserializeObject<List<Checklist>>(data);
@@ -33,6 +31,7 @@ namespace MauiApp1
                 else
                 {
                     noChecklistLabel.IsVisible = true;
+
                 }
             }
 
