@@ -33,9 +33,8 @@
                 VerticalOptions="Center"
                 IsVisible="False" />
         </Grid>
-        
+
         <Grid Grid.Row="2" Padding="20,0">
-            
             <ListView x:Name="listViewProjects" ItemsSource="{Binding ChecklistItems}" ItemTapped="OnItemTapped" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -51,10 +50,8 @@
                                             <Label Text="{Binding Name}" LineBreakMode="WordWrap" />
                                         </StackLayout>
 
-
                                         <Label Text="Description: " FontAttributes="Bold" />
                                         <Label Text="{Binding Description}" LineBreakMode="WordWrap"/>
-
 
                                         <StackLayout Orientation="Horizontal" Spacing="5">
                                             <Label Text="Weight: " FontAttributes="Bold" />
@@ -62,13 +59,13 @@
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>
-                                <!-- <BoxView HeightRequest="1" Color="Gray" Margin="0,10,0,0" HorizontalOptions="FillAndExpand"/>-->
+
+                                <BoxView IsVisible="{OnPlatform WinUI=True, Default=False}" HeightRequest="1" Color="Gray" Margin="0,10,0,0" HorizontalOptions="FillAndExpand"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
-       
     </Grid>
 </ContentPage>

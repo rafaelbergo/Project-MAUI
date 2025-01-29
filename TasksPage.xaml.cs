@@ -1,5 +1,6 @@
 using MauiApp1.Models;
 using Newtonsoft.Json;
+using Microsoft.Maui.Devices;
 
 namespace MauiApp1
 {
@@ -16,7 +17,7 @@ namespace MauiApp1
             taskID = itemID;
             LoadDataAsync();
         }
-
+        
         private async void LoadDataAsync()
         {
             var url = API.TASK_URL + taskID;
